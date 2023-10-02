@@ -13,7 +13,8 @@ namespace MyFirstARGame
         // Start is called before the first frame update
         void Start()
         {
-
+            PhotonNetwork.Instantiate("ManipulatorCubeNetwork", new Vector3(0, 0, 0), Quaternion.identity);
+            Debug.Log("Instantiated");
         }
 
         // Update is called once per frame
