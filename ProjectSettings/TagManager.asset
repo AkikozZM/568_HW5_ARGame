@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlaceableGrid
+  - Defense
+  - Attack
   layers:
   - Default
   - TransparentFX
