@@ -1,24 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace MyFirstARGame
 {
     public class GenerateBoard : MonoBehaviour
     {
         public GameObject piece;
+        public NetworkLauncher networkLauncher;
         public float gridSizeX = 4.0f;
         public float gridSizeY = 8.0f;
 
-        private Vector3 putPos;
         private void Update()
         {
-            /*
-            if (Input.GetMouseButtonDown(0))
+            //MouseClick();
+            ScreenTouch();
+        }
+
+        /// <summary>
+        /// Spawn a piece on the Placeable Grid
+        /// </summary>
+        private void SpawnPiece(Ray ray)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                SpawnPiece(ray);
-            } */
+                // check the tag && if the grid has piece already
+                if (hit.collider.gameObject.CompareTag("PlaceableGrid"))
+                {
+                    GameObject curr = hit.collider.gameObject;
+                    if (curr.GetComponent<PlaceableGrid_Script>().getHasPiece() == false)
+                    {
+                        curr.GetComponent<PlaceableGrid_Script>().setPiece();
+                        Vector3 hitPos = hit.collider.gameObject.transform.position;
+                        PhotonNetwork.Instantiate(piece.name, hitPos, Quaternion.identity);
+                    }
+                }
+            }
+        }
+        private void ScreenTouch()
+        {
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
@@ -29,15 +51,22 @@ namespace MyFirstARGame
                 }
             }
         }
-        private void SpawnPiece(Ray ray)
+        private void MouseClick()
         {
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                Vector3 hitPos = hit.collider.gameObject.transform.position;
-                Debug.Log(hitPos);
-                Instantiate(piece, hitPos, Quaternion.identity);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                SpawnPiece(ray);
             }
+        }
+        /// <summary>
+        /// NetworkLauncher class will call this function, when server detects the first player joins the room
+        /// </summary>
+        public void GenerateGameBoard()
+        {
+            // when game starts, instantiate a gameboard
+            GameObject board = GameObject.Find("Resources/Board");
+            PhotonNetwork.Instantiate("Board", new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 0));
         }
     }
 }

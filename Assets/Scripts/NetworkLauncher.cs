@@ -8,6 +8,7 @@ namespace MyFirstARGame
     /// </summary>
     public class NetworkLauncher : MonoBehaviourPunCallbacks
     {
+        public GenerateBoard generateBoard;
         /// <summary>
         /// Gets the singleton instance of this class (<see cref="NetworkLauncher"/>).
         /// </summary>
@@ -98,6 +99,8 @@ namespace MyFirstARGame
             if (PhotonNetwork.IsMasterClient)
             {
                 this.NetworkCommunication = PhotonNetwork.Instantiate("NetworkManager", Vector3.zero, Quaternion.identity).GetComponent<NetworkCommunication>();
+                // After create game room, create the game board.
+                generateBoard.GenerateGameBoard();
             }
 
             this.JoinedRoom?.Invoke(this);

@@ -9,20 +9,6 @@ namespace MyFirstARGame
     public class NetworkCommunication : MonoBehaviourPun
     {
         [SerializeField] private Scoreboard scoreboard;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            PhotonNetwork.Instantiate("ManipulatorCubeNetwork", new Vector3(0, 0, 0), Quaternion.identity);
-            Debug.Log("Instantiated");
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         public void IncrementScore()
         {
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
