@@ -65,8 +65,7 @@ namespace MyFirstARGame
         public void GenerateGameBoard()
         {
             // when game starts, instantiate a gameboard
-            GameObject board = GameObject.Find("Resources/createdAssets/Board");
-            PhotonNetwork.Instantiate("createdAssets/Board", new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 0));
+            GameObject board = PhotonNetwork.Instantiate("Board", new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 0)) as GameObject;
         }
     }
 }

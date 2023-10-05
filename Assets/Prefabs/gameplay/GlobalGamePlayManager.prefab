@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4546679906192909899}
   - component: {fileID: 7097909391547418102}
+  - component: {fileID: 2908031730752851538}
   m_Layer: 0
   m_Name: GlobalGamePlayManager
   m_TagString: Untagged
@@ -45,5 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piece: {fileID: 8193632514999352317, guid: 8bc2db83459e6dd4c82e93d8bb3a1f3e, type: 3}
+  networkLauncher: {fileID: 0}
   gridSizeX: 4
   gridSizeY: 8
+--- !u!114 &2908031730752851538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2313126042392496523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce15de0872868664f98bf6e30ef63302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

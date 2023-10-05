@@ -7,6 +7,8 @@ TagManager:
   - PlaceableGrid
   - Defense
   - Attack
+  - PlayerHitBox
+  - Income
   layers:
   - Default
   - TransparentFX

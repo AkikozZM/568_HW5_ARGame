@@ -6,17 +6,32 @@ namespace MyFirstARGame
 {
     public class BulletScript : MonoBehaviour
     {
-        public float direction = -1;
-        private float speed = 30;
+        private GameManager GlobalGameManager;
+
+        public int speed = 30;
+        public int damage = 1;
 
         void Start()
         {
-            this.GetComponent<Rigidbody>().AddForce(direction * transform.forward * speed);
+            GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
+            this.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
         }
 
         void Update()
         {
-            //this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + direction * speed);
+            if (Mathf.Abs(this.transform.position.x) > 5)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Defense")
+            {
+                collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
+                Destroy(gameObject);
+            }
         }
     }
 }
