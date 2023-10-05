@@ -27,6 +27,8 @@ namespace MyFirstARGame
                 {
                     GlobalGameManager.player_2_health -= collision.gameObject.GetComponent<BulletScript>().damage;
                 }
+
+                Destroy(collision.gameObject);
             }
         }
     }

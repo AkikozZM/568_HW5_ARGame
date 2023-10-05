@@ -14,8 +14,8 @@ namespace MyFirstARGame
 
         private void Update()
         {
-            //MouseClick();
-            ScreenTouch();
+            MouseClick();
+            //ScreenTouch();
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace MyFirstARGame
                     {
                         curr.GetComponent<PlaceableGrid_Script>().setPiece();
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
-                        PhotonNetwork.Instantiate(piece.name, hitPos, Quaternion.identity);
+                        PhotonNetwork.Instantiate(piece.name, hitPos, Quaternion.Euler(0, 90, 0));
                     }
                 }
             }
