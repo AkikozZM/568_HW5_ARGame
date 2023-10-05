@@ -45,10 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a90fe5eaa7a9c4ba8aba635a68f68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piece: {fileID: 8193632514999352317, guid: 8bc2db83459e6dd4c82e93d8bb3a1f3e, type: 3}
+  pieces:
+  - {fileID: 3290215455434337024, guid: 1e16d31472baef644b9c9a12791fa7ec, type: 3}
+  - {fileID: 3290215455434337024, guid: ac9adae682bb1aa4e8f969bf8344b409, type: 3}
+  - {fileID: 3290215455434337024, guid: 15eaddcee14e7dc4e930ce937c2d12fd, type: 3}
   networkLauncher: {fileID: 0}
   gridSizeX: 4
   gridSizeY: 8
+  canPlacePiece: 0
+  pieceIndex: 0
 --- !u!114 &2908031730752851538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,3 +66,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce15de0872868664f98bf6e30ef63302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_1_health: 0
+  player_2_health: 0
+  player_1_money: 0
+  player_2_money: 0
+  player_1_income: 0
+  player_2_income: 0

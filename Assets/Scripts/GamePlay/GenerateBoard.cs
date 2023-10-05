@@ -7,15 +7,27 @@ namespace MyFirstARGame
 {
     public class GenerateBoard : MonoBehaviour
     {
-        public GameObject piece;
+        public GameObject[] pieces;
         public NetworkLauncher networkLauncher;
         public float gridSizeX = 4.0f;
         public float gridSizeY = 8.0f;
+        public bool hasSelectedPiece;
+        public int pieceIndex;
+
+        private void Start()
+        {
+            pieceIndex = 0; // 0 means put nothing
+            hasSelectedPiece = false;
+        }
 
         private void Update()
         {
-            //MouseClick();
-            ScreenTouch();
+            
+            if (hasSelectedPiece)
+            {
+                //MouseClick();
+                ScreenTouch();
+            }
         }
 
         /// <summary>
@@ -34,7 +46,8 @@ namespace MyFirstARGame
                     {
                         curr.GetComponent<PlaceableGrid_Script>().setPiece();
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
-                        PhotonNetwork.Instantiate(piece.name, hitPos, Quaternion.identity);
+                        PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.identity);
+                        ResetSelected();
                     }
                 }
             }
@@ -71,6 +84,14 @@ namespace MyFirstARGame
 
             hitbox1.GetComponent<PlayerHitBox>().controller = 1;
             hitbox2.GetComponent<PlayerHitBox>().controller = 2;
+        }
+        /// <summary>
+        /// After user placed a piece, reset the select idx
+        /// </summary>
+        private void ResetSelected()
+        {
+            hasSelectedPiece = false;
+            pieceIndex = 0;
         }
     }
 }
