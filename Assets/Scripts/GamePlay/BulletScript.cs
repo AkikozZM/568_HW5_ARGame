@@ -32,6 +32,10 @@ namespace MyFirstARGame
                 collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
                 Destroy(gameObject);
             }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -66,6 +66,11 @@ namespace MyFirstARGame
         {
             // when game starts, instantiate a gameboard
             GameObject board = PhotonNetwork.Instantiate("Board", new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 0)) as GameObject;
+            GameObject hitbox1 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(1.0f, 0.3f, 0), Quaternion.identity) as GameObject;
+            GameObject hitbox2 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(-0.3f, 0.3f, 0), Quaternion.identity) as GameObject;
+
+            hitbox1.GetComponent<PlayerHitBox>().controller = 1;
+            hitbox2.GetComponent<PlayerHitBox>().controller = 2;
         }
     }
 }
