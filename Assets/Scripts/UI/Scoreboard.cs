@@ -50,11 +50,11 @@ namespace MyFirstARGame
                 GUILayout.Label($"{score.Key}: {score.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             }
 
-            GUILayout.Label("Player 1 Health: $" + GlobalGameManager.player_1_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
+            GUILayout.Label("Player 1 Health: " + GlobalGameManager.player_1_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             GUILayout.Label("Player 1 Money: $" + GlobalGameManager.player_1_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             GUILayout.FlexibleSpace();
 
-            GUILayout.Label("Player 2 Health: $" + GlobalGameManager.player_2_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
+            GUILayout.Label("Player 2 Health: " + GlobalGameManager.player_2_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             GUILayout.Label("Player 2 Money: $" + GlobalGameManager.player_2_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
 
 

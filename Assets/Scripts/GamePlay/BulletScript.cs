@@ -32,9 +32,9 @@ namespace MyFirstARGame
                 collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
                 Destroy(gameObject);
             }
-            else
+            else if (collision.gameObject.tag == "Bullet")
             {
-                Destroy(gameObject);
+                Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
             }
         }
     }

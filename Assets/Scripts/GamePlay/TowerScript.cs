@@ -45,7 +45,7 @@ namespace MyFirstARGame
         {
             if (this.tag == "Attack" && currentDelay > attackDelay)
             {
-                PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 1.05f, 0.0f), this.transform.rotation);
+                PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation);
                 currentDelay = 0;
             }
 
