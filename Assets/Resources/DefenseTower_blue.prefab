@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2084993339555496458}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Defense
+  m_TagString: Defense_blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,8 +119,8 @@ GameObject:
   - component: {fileID: 4736653274038869163}
   - component: {fileID: 3145737399524256225}
   m_Layer: 0
-  m_Name: DefenseTower
-  m_TagString: Defense
+  m_Name: DefenseTower_blue
+  m_TagString: Defense_blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 4220715601659195929}
   m_Layer: 0
   m_Name: Base
-  m_TagString: Defense
+  m_TagString: Defense_blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 6518511925268984173}
   m_Layer: 0
   m_Name: Tower
-  m_TagString: Defense
+  m_TagString: Defense_blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 3585784009053693853}
   m_Layer: 0
   m_Name: Shield
-  m_TagString: Defense
+  m_TagString: Defense_blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -491,7 +491,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e7360144d7f619248821fe47d8acb152, type: 2}
+  - {fileID: 2100000, guid: 893dba8f92a1e5b4f821ac96b7c2b845, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

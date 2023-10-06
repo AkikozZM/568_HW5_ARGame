@@ -8,6 +8,7 @@ namespace MyFirstARGame
     {
         private GameManager GlobalGameManager;
 
+        public int playerIdx;
         public int speed = 30;
         public int damage = 1;
 
@@ -27,12 +28,17 @@ namespace MyFirstARGame
 
         void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "Defense")
+            if (playerIdx == 1 && collision.gameObject.tag == "Defense")
+            {
+                Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
+                
+            }
+            else if (playerIdx == 1 && collision.gameObject.tag == "Defense_blue")
             {
                 collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
                 Destroy(gameObject);
             }
-            else if (collision.gameObject.tag == "Bullet")
+            if (collision.gameObject.tag == "Bullet")
             {
                 Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
             }

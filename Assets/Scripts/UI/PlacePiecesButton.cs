@@ -12,15 +12,6 @@ namespace MyFirstARGame
         public GameObject attk;
         public GameObject defense;
         public GameObject income;
-        private bool[] buttonSelected;
-
-        void Start()
-        {
-            buttonSelected = new bool[3];
-            buttonSelected[0] = false; // attk
-            buttonSelected[1] = false; // defense
-            buttonSelected[2] = false; // income
-        }
 
         /// <summary>
         /// when user touches tower buttons on screen
@@ -31,37 +22,21 @@ namespace MyFirstARGame
         public void SelectPieces(int i)
         {
             gb.pieceIndex = i;
-            gb.hasSelectedPiece = true;
         }
         public void SelectAttkButton()
         {
-            if (buttonSelected[0] == false)
-            {
-                SelectPieces(1);
-                buttonSelected[0] = true;
-                buttonSelected[1] = false;
-                buttonSelected[2] = false;
-            }
+            gb.hasSelectedPiece = true;
+            SelectPieces(1);
         }
         public void SelectDefenseButton()
         {
-            if (buttonSelected[1] == false)
-            {
-                SelectPieces(2);
-                buttonSelected[0] = false;
-                buttonSelected[1] = true;
-                buttonSelected[2] = false;
-            }
+            gb.hasSelectedPiece = true;
+            SelectPieces(2);
         }
         public void SelectIncomeButton()
         {
-            if (buttonSelected[2] == false)
-            {
-                SelectPieces(3);
-                buttonSelected[0] = false;
-                buttonSelected[1] = false;
-                buttonSelected[2] = true;
-            }
+            gb.hasSelectedPiece = true;
+            SelectPieces(3);
         }
     }
 }
