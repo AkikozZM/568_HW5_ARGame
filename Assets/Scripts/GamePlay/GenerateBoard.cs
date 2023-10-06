@@ -14,18 +14,28 @@ namespace MyFirstARGame
         public bool hasSelectedPiece;
         public int pieceIndex;
 
+        public bool canCreate;
+        GameObject board;
+        GameObject hitbox1;
+        GameObject hitbox2;
+
         private void Start()
         {
             pieceIndex = 0; // 0 means put nothing
+            canCreate = false;
             hasSelectedPiece = false;
         }
 
         private void Update()
         {
+            if (canCreate)
+            {
+                GenerateGameBoard();
+            }
             
             if (hasSelectedPiece)
             {
-                //MouseClick();
+                MouseClick();
                 ScreenTouch();
             }
         }
@@ -48,7 +58,12 @@ namespace MyFirstARGame
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
 
                         int player_num = PhotonNetwork.LocalPlayer.ActorNumber;
-                        if (player_num == 2)
+                        if (player_num == 1)
+                        {
+                            GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
+                            curr_piece.GetComponent<TowerScript>().controller = 0;
+                        }
+                        else if (player_num == 2)
                         {
                             GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
                             curr_piece.GetComponent<TowerScript>().controller = 1;
@@ -88,13 +103,24 @@ namespace MyFirstARGame
         /// </summary>
         public void GenerateGameBoard()
         {
-            // when game starts, instantiate a gameboard
-            GameObject board = PhotonNetwork.Instantiate("Board", new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 0)) as GameObject;
-            GameObject hitbox1 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(1.0f, 0.3f, 0), Quaternion.identity) as GameObject;
-            GameObject hitbox2 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(-0.3f, 0.3f, 0), Quaternion.identity) as GameObject;
+            
+            if (board == null)
+            {
+                // when game starts, instantiate a gameboard
+                board = PhotonNetwork.Instantiate("Board", new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 0));
+                hitbox1 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(1.0f, 0.3f, 0), Quaternion.identity);
+                hitbox2 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(-0.3f, 0.3f, 0), Quaternion.identity);
 
-            hitbox1.GetComponent<PlayerHitBox>().controller = 1;
-            hitbox2.GetComponent<PlayerHitBox>().controller = 2;
+                hitbox1.GetComponent<PlayerHitBox>().controller = 1;
+                hitbox2.GetComponent<PlayerHitBox>().controller = 2;
+            }
+            else if (board != null)
+            {
+                board.transform.position = new Vector3(0, 0, 0);
+                hitbox1.transform.position = new Vector3(1.0f, 0.3f, 0);
+                hitbox2.transform.position = new Vector3(-0.3f, 0.3f, 0);
+            }
+            
         }
         /// <summary>
         /// After user placed a piece, reset the select idx
