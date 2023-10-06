@@ -11,7 +11,7 @@ namespace MyFirstARGame
         //private GameManager GlobalGameManager;
 
         public int controller = 0;
-
+        public int playerIdx;
         private int attackDelay;
 
         private int currentDelay;
@@ -53,8 +53,17 @@ namespace MyFirstARGame
 
             if (this.tag == "Attack" && currentDelay > attackDelay)
             {
-                PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation);
-                currentDelay = 0;
+                if (playerIdx == 1)
+                {
+                    PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation);
+                    currentDelay = 0;
+                }
+                else if (playerIdx == 2)
+                {
+                    PhotonNetwork.Instantiate("Bullet_blue", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation);
+                    currentDelay = 0;
+                }
+                
             }
 
             currentDelay++;
