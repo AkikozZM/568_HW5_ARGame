@@ -7,12 +7,20 @@ namespace MyFirstARGame
 {
     internal class Scoreboard : MonoBehaviour
     {
-        private Dictionary<string, int> scores;
         private GameManager GlobalGameManager;
+
+        private Dictionary<string, int> scores;
+        private Dictionary<string, int> health;
+        private Dictionary<string, int> money;
+        private Dictionary<string, int> income;
 
         private void Start()
         {
             this.scores = new Dictionary<string, int>();
+            this.health = new Dictionary<string, int>();
+            this.money = new Dictionary<string, int>();
+            this.income = new Dictionary<string, int>();
+
             GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
         }
 
@@ -38,6 +46,18 @@ namespace MyFirstARGame
             {
                 return 0;
             }
+        }
+
+        public void SetHealth(int health_1, int health_2)
+        {
+            GlobalGameManager.player_1_health = health_1;
+            GlobalGameManager.player_2_health = health_2;
+        }
+
+        public int[] GetHealth()
+        {
+            int[] health = {GlobalGameManager.player_1_health, GlobalGameManager.player_2_health};
+            return health;
         }
 
         private void OnGUI()
