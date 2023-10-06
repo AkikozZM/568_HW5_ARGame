@@ -100,7 +100,7 @@ namespace MyFirstARGame
             {
                 this.NetworkCommunication = PhotonNetwork.Instantiate("NetworkManager", Vector3.zero, Quaternion.identity).GetComponent<NetworkCommunication>();
                 // After create game room, create the game board.
-                generateBoard.GenerateGameBoard();
+                generateBoard.canCreate = true;
             }
 
             this.JoinedRoom?.Invoke(this);
