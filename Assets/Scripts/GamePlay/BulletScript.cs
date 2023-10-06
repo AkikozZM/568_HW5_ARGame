@@ -38,6 +38,16 @@ namespace MyFirstARGame
                 collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
                 Destroy(gameObject);
             }
+            if (playerIdx == 2 && collision.gameObject.tag == "Defense_blue")
+            {
+                Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
+
+            }
+            else if (playerIdx == 2 && collision.gameObject.tag == "Defense")
+            {
+                collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
+                Destroy(gameObject);
+            }
             if (collision.gameObject.tag == "Bullet")
             {
                 Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
