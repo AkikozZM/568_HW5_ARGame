@@ -35,7 +35,7 @@ namespace MyFirstARGame
             
             if (hasSelectedPiece)
             {
-                MouseClick();
+                //MouseClick();
                 ScreenTouch();
             }
         }
@@ -61,7 +61,7 @@ namespace MyFirstARGame
                         if (player_num == 1)
                         {
                             GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
-                            curr_piece.GetComponent<TowerScript>().controller = 0;
+                            curr_piece.GetComponent<TowerScript>().controller = 1;
                         }
                         else if (player_num == 2)
                         {
@@ -78,6 +78,7 @@ namespace MyFirstARGame
                 }
             }
         }
+
         private void ScreenTouch()
         {
             if (Input.touchCount > 0)

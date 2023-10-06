@@ -10,16 +10,12 @@ namespace MyFirstARGame
         private GameManager GlobalGameManager;
 
         private Dictionary<string, int> scores;
-        private Dictionary<string, int> health;
-        private Dictionary<string, int> money;
-        private Dictionary<string, int> income;
+
+        private List<int> connected_players = new List<int>();
 
         private void Start()
         {
             this.scores = new Dictionary<string, int>();
-            this.health = new Dictionary<string, int>();
-            this.money = new Dictionary<string, int>();
-            this.income = new Dictionary<string, int>();
 
             GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
         }
@@ -60,6 +56,44 @@ namespace MyFirstARGame
             return health;
         }
 
+        public void SetIncome(int income_1, int income_2)
+        {
+            GlobalGameManager.player_1_income = income_1;
+            GlobalGameManager.player_2_income = income_2;
+        }
+
+        public int[] GetIncome()
+        {
+            int[] income = { GlobalGameManager.player_1_income, GlobalGameManager.player_2_income };
+            return income;
+        }
+
+        public void SetMoney(int money_1, int money_2)
+        {
+            GlobalGameManager.player_1_money = money_1;
+            GlobalGameManager.player_2_money = money_2;
+        }
+
+        public int[] GetMoney()
+        {
+            int[] money = { GlobalGameManager.player_1_money, GlobalGameManager.player_2_money };
+            return money;
+        }
+
+        public void ReadyMethod(int player_num)
+        {
+            if (!connected_players.Contains(player_num))
+            {
+                Debug.Log("Player: " + player_num + " joined");
+                connected_players.Add(player_num);
+            }
+            if (connected_players.Contains(2) && connected_players.Contains(3))
+            {
+                Debug.Log("All Players Joined");
+                GameObject.Find("ReadyButton").GetComponent<ReadyButton>().StartGame();
+            }
+        }
+
         private void OnGUI()
         {
             GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
@@ -75,13 +109,14 @@ namespace MyFirstARGame
 
             GUILayout.Label("Player 1 Health: " + GlobalGameManager.player_1_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             GUILayout.Label("Player 1 Money: $" + GlobalGameManager.player_1_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
+            GUILayout.Label("Player 1 Income: $" + GlobalGameManager.player_1_income, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             GUILayout.FlexibleSpace();
 
             GUILayout.Label("Player 2 Health: " + GlobalGameManager.player_2_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             GUILayout.Label("Player 2 Money: $" + GlobalGameManager.player_2_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
-
-
+            GUILayout.Label("Player 2 Income: $" + GlobalGameManager.player_2_income, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             GUILayout.FlexibleSpace();
+
             GUILayout.EndVertical();
             GUILayout.EndArea();
         }

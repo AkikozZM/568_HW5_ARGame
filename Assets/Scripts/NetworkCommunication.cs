@@ -42,6 +42,63 @@ namespace MyFirstARGame
         {
             this.scoreboard.SetHealth(health1, health2);
         }
+
+        public void IncrementIncome(int increase1, int increase2)
+        {
+            var income = this.scoreboard.GetIncome();
+
+            int currentIncome1 = income[0];
+            int currentIncome2 = income[1];
+
+            currentIncome1 += increase1;
+            currentIncome2 += increase2;
+            Debug.Log(currentIncome1);
+
+            this.photonView.RPC("Network_IncrementIncome", RpcTarget.All, currentIncome1, currentIncome2);
+        }
+
+        [PunRPC]
+        public void Network_IncrementIncome(int income1, int income2)
+        {
+            this.scoreboard.SetIncome(income1, income2);
+        }
+
+        public void IncrementMoney()
+        {
+            var money = this.scoreboard.GetMoney();
+
+            int currentMoney1 = money[0];
+            int currentMoney2 = money[1];
+
+            var income = this.scoreboard.GetIncome();
+
+            int currentIncome1 = income[0];
+            int currentIncome2 = income[1];
+
+            currentMoney1 += currentIncome1;
+            currentMoney2 += currentIncome2;
+
+            this.photonView.RPC("Network_IncrementMoney", RpcTarget.All, currentMoney1, currentMoney2);
+        }
+
+        [PunRPC]
+        public void Network_IncrementMoney(int money1, int money2)
+        {
+            this.scoreboard.SetMoney(money1, money2);
+        }
+
+        public void ReadyMethod()
+        {
+            int act_num = PhotonNetwork.LocalPlayer.ActorNumber;
+
+            this.photonView.RPC("Network_ReadyMethod", RpcTarget.All, act_num);
+        }
+
+        [PunRPC]
+        public void Network_ReadyMethod(int player_num)
+        {
+            this.scoreboard.ReadyMethod(player_num);
+        }
     }
 
 }

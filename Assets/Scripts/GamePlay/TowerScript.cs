@@ -7,7 +7,8 @@ namespace MyFirstARGame
 {
     public class TowerScript : MonoBehaviour
     {
-        private GameManager GlobalGameManager;
+        private NetworkCommunication netComm;
+        //private GameManager GlobalGameManager;
 
         public int controller = 0;
 
@@ -18,9 +19,12 @@ namespace MyFirstARGame
         public int towerHealth;
         public int towerCost;
 
+        private bool firstMoment;
+
         void Start()
         {
-            GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
+            netComm = FindObjectOfType<NetworkCommunication>();
+            //GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
 
             attackDelay = 500;
             currentDelay = 0;
@@ -28,21 +32,25 @@ namespace MyFirstARGame
             towerHealth = 10;
             towerCost = 50;
 
-            if (this.tag == "Income")
-            {
-                if (controller == 1)
-                {
-                    GlobalGameManager.player_1_income += 5;
-                }
-                else if (controller == 2)
-                {
-                    GlobalGameManager.player_2_income += 5;
-                }
-            }
+            firstMoment = true;
         }
 
         void Update()
         {
+            if (this.tag == "Income" && firstMoment)
+            {
+                Debug.Log("Income Increase");
+                if (controller == 1)
+                {
+                    netComm.IncrementIncome(5, 0);
+                }
+                else if (controller == 2)
+                {
+                    netComm.IncrementIncome(0, 5);
+                }
+                firstMoment = false;
+            }
+
             if (this.tag == "Attack" && currentDelay > attackDelay)
             {
                 PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation);
