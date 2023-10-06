@@ -52,7 +52,6 @@ namespace MyFirstARGame
 
             currentIncome1 += increase1;
             currentIncome2 += increase2;
-            Debug.Log(currentIncome1);
 
             this.photonView.RPC("Network_IncrementIncome", RpcTarget.All, currentIncome1, currentIncome2);
         }

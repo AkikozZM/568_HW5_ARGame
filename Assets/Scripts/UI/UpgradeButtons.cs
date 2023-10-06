@@ -42,6 +42,8 @@ namespace MyFirstARGame
 
         private bool upgradeMenuOpen;
 
+        private int upgradeCost;
+
         private void Start()
         {
             GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
@@ -55,6 +57,8 @@ namespace MyFirstARGame
             currPlayer = 0;
 
             upgradeMenuOpen = false;
+
+            upgradeCost = 50;
         }
 
         private void Update()
@@ -85,7 +89,7 @@ namespace MyFirstARGame
             switch(attackLevel)
             {
                 case 0:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Attack1Button.interactable = true;
                     }
@@ -100,7 +104,7 @@ namespace MyFirstARGame
 
                     break;
                 case 1:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Attack2Button.interactable = true;
                     }
@@ -119,7 +123,7 @@ namespace MyFirstARGame
 
                     break;
                 case 2:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Attack3Button.interactable = true;
                     }
@@ -138,7 +142,7 @@ namespace MyFirstARGame
 
                     break;
                 case 3:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Attack4Button.interactable = true;
                     }
@@ -172,7 +176,7 @@ namespace MyFirstARGame
             switch (defenseLevel)
             {
                 case 0:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Defense1Button.interactable = true;
                     }
@@ -187,7 +191,7 @@ namespace MyFirstARGame
 
                     break;
                 case 1:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Defense2Button.interactable = true;
                     }
@@ -206,7 +210,7 @@ namespace MyFirstARGame
 
                     break;
                 case 2:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Defense3Button.interactable = true;
                     }
@@ -225,7 +229,7 @@ namespace MyFirstARGame
 
                     break;
                 case 3:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Defense4Button.interactable = true;
                     }
@@ -259,7 +263,7 @@ namespace MyFirstARGame
             switch (incomeLevel)
             {
                 case 0:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Income1Button.interactable = true;
                     }
@@ -274,7 +278,7 @@ namespace MyFirstARGame
 
                     break;
                 case 1:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Income2Button.interactable = true;
                     }
@@ -293,7 +297,7 @@ namespace MyFirstARGame
 
                     break;
                 case 2:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Income3Button.interactable = true;
                     }
@@ -312,7 +316,7 @@ namespace MyFirstARGame
 
                     break;
                 case 3:
-                    if (currMoney >= 50)
+                    if (currMoney >= upgradeCost)
                     {
                         Income4Button.interactable = true;
                     }
@@ -400,11 +404,13 @@ namespace MyFirstARGame
         {
             if (currPlayer == 1 || currPlayer == 2)
             {
-                NetComm.SpendMoney(50, 0);
+                NetComm.SpendMoney(upgradeCost, 0);
+                GlobalGameManager.player_1_damage += 2;
             }
             else if (currPlayer == 3)
             {
-                NetComm.SpendMoney(0, 50);
+                NetComm.SpendMoney(0, upgradeCost);
+                GlobalGameManager.player_2_damage += 2;
             }
 
             attackLevel++;
@@ -413,11 +419,13 @@ namespace MyFirstARGame
         {
             if (currPlayer == 1 || currPlayer == 2)
             {
-                NetComm.SpendMoney(50, 0);
+                NetComm.SpendMoney(upgradeCost, 0);
+                GlobalGameManager.player_1_tower_health += 20;
             }
             else if (currPlayer == 3)
             {
-                NetComm.SpendMoney(0, 50);
+                NetComm.SpendMoney(0, upgradeCost);
+                GlobalGameManager.player_2_tower_health += 20;
             }
 
             defenseLevel++;
@@ -426,11 +434,13 @@ namespace MyFirstARGame
         {
             if (currPlayer == 1 || currPlayer == 2)
             {
-                NetComm.SpendMoney(50, 0);
+                NetComm.SpendMoney(upgradeCost, 0);
+                GlobalGameManager.player_1_tower_income += 10;
             }
             else if (currPlayer == 3)
             {
-                NetComm.SpendMoney(0, 50);
+                NetComm.SpendMoney(0, upgradeCost);
+                GlobalGameManager.player_2_tower_income += 10;
             }
 
             incomeLevel++;

@@ -11,55 +11,53 @@ namespace MyFirstARGame
 
         public int controller = 0;
         public int playerIdx;
-        private int attackDelay;
+        private int attackDelay = 500;
 
         private int currentDelay;
 
-        public int towerHealth;
+        public int towerHealth = 10;
+        public int towerDamage = 1;
+        public int towerIncome = 5;
 
-        private bool firstMoment;
+        private bool firstMoment = true;
+        public bool createDelay = false;
 
         void Start()
         {
             netComm = FindObjectOfType<NetworkCommunication>();
-
-            attackDelay = 500;
-            currentDelay = 0;
-
-            towerHealth = 10;
-
-            firstMoment = true;
         }
 
         void Update()
         {
-            if (firstMoment)
+            if (firstMoment && createDelay)
             {
                 if (this.tag == "Income")
                 {
                     if (controller == 1)
                     {
-                        netComm.IncrementIncome(5, 0);
+                        netComm.IncrementIncome(towerIncome, 0);
                     }
                     else if (controller == 2)
                     {
-                        netComm.IncrementIncome(0, 5);
+                        netComm.IncrementIncome(0, towerIncome);
                     }
                 }
 
                 firstMoment = false;
             }
 
-            if (this.tag == "Attack" && currentDelay > attackDelay)
+            if (this.tag == "Attack" && currentDelay > attackDelay && createDelay)
             {
                 if (playerIdx == 1)
                 {
-                    PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation);
+                    GameObject bull = PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation) as GameObject;
+                    bull.GetComponent<BulletScript>().damage = towerDamage;
                     currentDelay = 0;
                 }
                 else if (playerIdx == 2)
                 {
-                    PhotonNetwork.Instantiate("Bullet_blue", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation);
+                    GameObject bull = PhotonNetwork.Instantiate("Bullet_blue", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation) as GameObject;
+                    bull.GetComponent<BulletScript>().damage = towerDamage;
                     currentDelay = 0;
                 }
                 

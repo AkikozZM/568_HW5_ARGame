@@ -22,6 +22,15 @@ namespace MyFirstARGame
 
         private bool start_game;
 
+        public int player_1_damage;
+        public int player_2_damage;
+
+        public int player_1_tower_health;
+        public int player_2_tower_health;
+
+        public int player_1_tower_income;
+        public int player_2_tower_income;
+
         void Start()
         {
             player_1_health = 100;
@@ -37,6 +46,15 @@ namespace MyFirstARGame
             income_delay_count = 0;
 
             start_game = false;
+
+            player_1_damage = 1;
+            player_2_damage = 1;
+
+            player_1_tower_health = 10;
+            player_2_tower_health = 10;
+
+            player_1_tower_income = 5;
+            player_2_tower_income = 5;
         }
 
         void Update()

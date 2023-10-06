@@ -22,12 +22,16 @@ namespace MyFirstARGame
 
         private bool startGame;
 
+        private GameManager GlobalGameManager;
+
         private void Start()
         {
             pieceIndex = 0; // 0 means put nothing
             canCreate = false;
             hasSelectedPiece = false;
             startGame = false;
+
+            GlobalGameManager = FindObjectOfType<GameManager>();
         }
 
         private void Update()
@@ -64,7 +68,12 @@ namespace MyFirstARGame
                         curr.GetComponent<PlaceableGrid_Script>().setPiece();
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
                         GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, 90, 0)) as GameObject;
-                        curr_piece.GetComponent<TowerScript>().controller = 1;
+                        TowerScript tower = curr_piece.GetComponent<TowerScript>();
+                        tower.controller = 1;
+                        tower.towerDamage = GlobalGameManager.player_1_damage;
+                        tower.towerHealth = GlobalGameManager.player_1_tower_health;
+                        tower.towerIncome = GlobalGameManager.player_1_tower_income;
+                        tower.createDelay = true;
                         //ResetSelected();
                     }
                 }
@@ -77,7 +86,12 @@ namespace MyFirstARGame
                         curr.GetComponent<PlaceableGrid_Script>().setPiece();
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
                         GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex + 3].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
-                        curr_piece.GetComponent<TowerScript>().controller = 2;
+                        TowerScript tower = curr_piece.GetComponent<TowerScript>();
+                        tower.controller = 2;
+                        tower.towerDamage = GlobalGameManager.player_2_damage;
+                        tower.towerHealth = GlobalGameManager.player_2_tower_health;
+                        tower.towerIncome = GlobalGameManager.player_2_tower_income;
+                        tower.createDelay = true;
                         //ResetSelected();
                     }
                 }
