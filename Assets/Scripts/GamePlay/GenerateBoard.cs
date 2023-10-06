@@ -48,12 +48,12 @@ namespace MyFirstARGame
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
 
                         int player_num = PhotonNetwork.LocalPlayer.ActorNumber;
-                        if (player_num == 1)
+                        if (player_num == 0)
                         {
                             GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
                             curr_piece.GetComponent<TowerScript>().controller = 1;
                         }
-                        else if (player_num == 2)
+                        else if (player_num == 1)
                         {
                             GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, 90, 0)) as GameObject;
                             curr_piece.GetComponent<TowerScript>().controller = 2;
