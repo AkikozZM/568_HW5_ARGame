@@ -6,7 +6,7 @@ namespace MyFirstARGame
 {
     public class PlaceableGrid_Script : MonoBehaviour
     {
-        private bool hasPiece;
+        public bool hasPiece;
         private void Start()
         {
             hasPiece = false;

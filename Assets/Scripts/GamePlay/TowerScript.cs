@@ -8,7 +8,6 @@ namespace MyFirstARGame
     public class TowerScript : MonoBehaviour
     {
         private NetworkCommunication netComm;
-        //private GameManager GlobalGameManager;
 
         public int controller = 0;
         public int playerIdx;
@@ -17,37 +16,37 @@ namespace MyFirstARGame
         private int currentDelay;
 
         public int towerHealth;
-        public int towerCost;
 
         private bool firstMoment;
 
         void Start()
         {
             netComm = FindObjectOfType<NetworkCommunication>();
-            //GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
 
             attackDelay = 500;
             currentDelay = 0;
 
             towerHealth = 10;
-            towerCost = 50;
 
             firstMoment = true;
         }
 
         void Update()
         {
-            if (this.tag == "Income" && firstMoment)
+            if (firstMoment)
             {
-                Debug.Log("Income Increase");
-                if (controller == 1)
+                if (this.tag == "Income")
                 {
-                    netComm.IncrementIncome(5, 0);
+                    if (controller == 1)
+                    {
+                        netComm.IncrementIncome(5, 0);
+                    }
+                    else if (controller == 2)
+                    {
+                        netComm.IncrementIncome(0, 5);
+                    }
                 }
-                else if (controller == 2)
-                {
-                    netComm.IncrementIncome(0, 5);
-                }
+
                 firstMoment = false;
             }
 

@@ -8,6 +8,7 @@ namespace MyFirstARGame
     internal class Scoreboard : MonoBehaviour
     {
         private GameManager GlobalGameManager;
+        private GenerateBoard GeneratedBoard;
 
         private Dictionary<string, int> scores;
 
@@ -18,6 +19,7 @@ namespace MyFirstARGame
             this.scores = new Dictionary<string, int>();
 
             GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
+            GeneratedBoard = GameObject.Find("GlobalGamePlayManager").GetComponent<GenerateBoard>();
         }
 
         public void SetScore(string playerName, int score)
@@ -48,6 +50,15 @@ namespace MyFirstARGame
         {
             GlobalGameManager.player_1_health = health_1;
             GlobalGameManager.player_2_health = health_2;
+
+            if (health_1 <= 0)
+            {
+                Debug.Log("Game Over Player 2 Wins");
+            }
+            else if (health_2 <= 0)
+            {
+                Debug.Log("Game Over Player 1 Wins");
+            }
         }
 
         public int[] GetHealth()
@@ -87,7 +98,7 @@ namespace MyFirstARGame
                 Debug.Log("Player: " + player_num + " joined");
                 connected_players.Add(player_num);
             }
-            if (connected_players.Contains(2) && connected_players.Contains(3))
+            if (connected_players.Contains(1) && connected_players.Contains(1))
             {
                 Debug.Log("All Players Joined");
                 if (GameObject.Find("ReadyButton").GetComponent<ReadyButton>() != null)
@@ -98,6 +109,8 @@ namespace MyFirstARGame
                 {
                     GlobalGameManager.StartGameManager();
                 }
+
+                GeneratedBoard.StartGameBoard();
             }
         }
 

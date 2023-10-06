@@ -63,6 +63,27 @@ namespace MyFirstARGame
             this.scoreboard.SetIncome(income1, income2);
         }
 
+        public bool SpendMoney(int cost1, int cost2)
+        {
+            var money = this.scoreboard.GetMoney();
+
+            int currentMoney1 = money[0];
+            int currentMoney2 = money[1];
+
+            currentMoney1 -= cost1;
+            currentMoney2 -= cost2;
+
+            if (currentMoney1 >= 0 && currentMoney2 >= 0)
+            {
+                this.photonView.RPC("Network_IncrementMoney", RpcTarget.All, currentMoney1, currentMoney2);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void IncrementMoney()
         {
             var money = this.scoreboard.GetMoney();

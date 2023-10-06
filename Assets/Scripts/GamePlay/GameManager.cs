@@ -33,7 +33,7 @@ namespace MyFirstARGame
             player_1_money = 100;
             player_2_money = 100;
 
-            income_delay = 500;
+            income_delay = 800;
             income_delay_count = 0;
 
             start_game = false;

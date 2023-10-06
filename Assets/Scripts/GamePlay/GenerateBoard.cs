@@ -9,6 +9,7 @@ namespace MyFirstARGame
     {
         public GameObject[] pieces;
         public NetworkLauncher networkLauncher;
+        private NetworkCommunication netComm;
         public float gridSizeX = 4.0f;
         public float gridSizeY = 8.0f;
         public bool hasSelectedPiece;
@@ -19,11 +20,14 @@ namespace MyFirstARGame
         GameObject hitbox1;
         GameObject hitbox2;
 
+        private bool startGame;
+
         private void Start()
         {
             pieceIndex = 0; // 0 means put nothing
             canCreate = false;
             hasSelectedPiece = false;
+            startGame = false;
         }
 
         private void Update()
@@ -32,11 +36,11 @@ namespace MyFirstARGame
             {
                 GenerateGameBoard();
             }
-            
-            if (hasSelectedPiece)
+
+            if (hasSelectedPiece && startGame)
             {
-                //MouseClick();
-                ScreenTouch();
+                MouseClick();
+                //ScreenTouch();
             }
         }
 
@@ -47,11 +51,12 @@ namespace MyFirstARGame
         {
             int player_num = PhotonNetwork.LocalPlayer.ActorNumber;
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit))
             {
                 // check the tag && if the grid has piece already
                 // Player 1 places pieces on green grid
-                if (player_num == 2 || player_num == 1 && hit.collider.gameObject.CompareTag("PlaceableGrid"))
+                if (player_num == 2 || player_num == 1 && hit.collider.gameObject.CompareTag("PlaceableGrid") && netComm.SpendMoney(50, 0))
                 {
                     GameObject curr = hit.collider.gameObject;
                     if (curr.GetComponent<PlaceableGrid_Script>().getHasPiece() == false)
@@ -64,7 +69,7 @@ namespace MyFirstARGame
                     }
                 }
                 // Player 2 places pieces on red grid
-                else if (player_num == 3 && hit.collider.gameObject.CompareTag("PlaceableGrid_red"))
+                else if (player_num == 3 && hit.collider.gameObject.CompareTag("PlaceableGrid_red") && netComm.SpendMoney(0, 50))
                 {
                     GameObject curr = hit.collider.gameObject;
                     if (curr.GetComponent<PlaceableGrid_Script>().getHasPiece() == false)
@@ -131,6 +136,13 @@ namespace MyFirstARGame
         {
             hasSelectedPiece = false;
             pieceIndex = 0;
+        }
+
+        public void StartGameBoard()
+        {
+            Debug.Log("Board Connected");
+            netComm = FindObjectOfType<NetworkCommunication>();
+            startGame = true;
         }
     }
 }
