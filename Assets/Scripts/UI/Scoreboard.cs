@@ -90,7 +90,14 @@ namespace MyFirstARGame
             if (connected_players.Contains(2) && connected_players.Contains(3))
             {
                 Debug.Log("All Players Joined");
-                GameObject.Find("ReadyButton").GetComponent<ReadyButton>().StartGame();
+                if (GameObject.Find("ReadyButton").GetComponent<ReadyButton>() != null)
+                {
+                    GameObject.Find("ReadyButton").GetComponent<ReadyButton>().StartGame();
+                }
+                else
+                {
+                    GlobalGameManager.StartGameManager();
+                }
             }
         }
 
