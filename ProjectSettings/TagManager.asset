@@ -11,6 +11,7 @@ TagManager:
   - Income
   - Bullet
   - PlaceableGrid_red
+  - Defense_blue
   layers:
   - Default
   - TransparentFX

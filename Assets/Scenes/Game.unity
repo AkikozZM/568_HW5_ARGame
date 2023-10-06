@@ -1286,45 +1286,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
         type: 3}
-      propertyPath: piece
-      value: 
-      objectReference: {fileID: 3290215455434337024, guid: 1e16d31472baef644b9c9a12791fa7ec,
-        type: 3}
-    - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
-        type: 3}
-      propertyPath: pieceButton
-      value: 
-      objectReference: {fileID: 1592398618}
-    - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
-        type: 3}
       propertyPath: networkLauncher
       value: 
       objectReference: {fileID: 367829436}
     - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
         type: 3}
       propertyPath: pieces.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
         type: 3}
-      propertyPath: pieces.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
-        type: 3}
-      propertyPath: pieces.Array.data[1]
-      value: 
-      objectReference: {fileID: 3290215455434337024, guid: 1e16d31472baef644b9c9a12791fa7ec,
-        type: 3}
-    - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
-        type: 3}
-      propertyPath: pieces.Array.data[2]
-      value: 
-      objectReference: {fileID: 3290215455434337024, guid: ac9adae682bb1aa4e8f969bf8344b409,
-        type: 3}
-    - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
-        type: 3}
-      propertyPath: pieces.Array.data[3]
+      propertyPath: pieces.Array.data[6]
       value: 
       objectReference: {fileID: 3290215455434337024, guid: 15eaddcee14e7dc4e930ce937c2d12fd,
         type: 3}
