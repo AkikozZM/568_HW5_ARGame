@@ -43,6 +43,9 @@ MonoBehaviour:
   - SendOffset
   - UpdateScale
   - Network_SetPlayerScore
+  - Network_IncrementHealth_1
+  - Network_IncrementHealth_2
+  - Network_IncrementHealth
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
