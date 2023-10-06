@@ -46,7 +46,18 @@ namespace MyFirstARGame
                     {
                         curr.GetComponent<PlaceableGrid_Script>().setPiece();
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
-                        PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.identity);
+
+                        int player_num = PhotonNetwork.LocalPlayer.ActorNumber;
+                        if (player_num == 1)
+                        {
+                            GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
+                            curr_piece.GetComponent<TowerScript>().controller = 1;
+                        }
+                        else if (player_num == 2)
+                        {
+                            GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, 90, 0)) as GameObject;
+                            curr_piece.GetComponent<TowerScript>().controller = 2;
+                        }
                         ResetSelected();
                     }
                 }
