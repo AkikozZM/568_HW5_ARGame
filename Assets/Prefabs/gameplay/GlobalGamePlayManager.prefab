@@ -46,14 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieces:
+  - {fileID: 0}
   - {fileID: 3290215455434337024, guid: 1e16d31472baef644b9c9a12791fa7ec, type: 3}
   - {fileID: 3290215455434337024, guid: ac9adae682bb1aa4e8f969bf8344b409, type: 3}
   - {fileID: 3290215455434337024, guid: 15eaddcee14e7dc4e930ce937c2d12fd, type: 3}
+  - {fileID: 3290215455434337024, guid: f161060d8c1b09e499b063fb40acb59a, type: 3}
+  - {fileID: 3290215455434337024, guid: 0c4ad3b1aff708b40998eea77662eaeb, type: 3}
   networkLauncher: {fileID: 0}
   gridSizeX: 4
   gridSizeY: 8
-  canPlacePiece: 0
+  hasSelectedPiece: 0
   pieceIndex: 0
+  canCreate: 0
 --- !u!114 &2908031730752851538
 MonoBehaviour:
   m_ObjectHideFlags: 0

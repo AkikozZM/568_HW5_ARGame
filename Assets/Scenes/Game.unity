@@ -1292,6 +1292,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
         type: 3}
+      propertyPath: pieceButton
+      value: 
+      objectReference: {fileID: 1592398618}
+    - target: {fileID: 7097909391547418102, guid: fd40915b71d6a6c45ae02b825c2d2fa9,
+        type: 3}
       propertyPath: networkLauncher
       value: 
       objectReference: {fileID: 367829436}

@@ -10,6 +10,7 @@ TagManager:
   - PlayerHitBox
   - Income
   - Bullet
+  - PlaceableGrid_red
   layers:
   - Default
   - TransparentFX
