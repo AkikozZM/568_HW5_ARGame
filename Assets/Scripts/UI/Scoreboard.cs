@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace MyFirstARGame
 {
@@ -49,6 +50,8 @@ namespace MyFirstARGame
             {
                 GUILayout.Label($"{score.Key}: {score.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             }
+            int player_num = PhotonNetwork.LocalPlayer.ActorNumber;
+            GUILayout.Label("Player ID: " + player_num, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
 
             GUILayout.Label("Player 1 Health: " + GlobalGameManager.player_1_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             GUILayout.Label("Player 1 Money: $" + GlobalGameManager.player_1_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
