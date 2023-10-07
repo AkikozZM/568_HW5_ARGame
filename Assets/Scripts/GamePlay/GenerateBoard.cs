@@ -60,7 +60,7 @@ namespace MyFirstARGame
             {
                 // check the tag && if the grid has piece already
                 // Player 1 places pieces on green grid
-                if (player_num == 2 || player_num == 1 && hit.collider.gameObject.CompareTag("PlaceableGrid") && netComm.SpendMoney(50, 0))
+                if ((player_num == 2 || player_num == 1) && hit.collider.gameObject.CompareTag("PlaceableGrid") && netComm.SpendMoney(50, 0))
                 {
                     GameObject curr = hit.collider.gameObject;
                     if (curr.GetComponent<PlaceableGrid_Script>().getHasPiece() == false)
