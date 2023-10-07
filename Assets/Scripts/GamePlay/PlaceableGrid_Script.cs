@@ -1,10 +1,11 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyFirstARGame
 {
-    public class PlaceableGrid_Script : MonoBehaviour
+    public class PlaceableGrid_Script : MonoBehaviourPun
     {
         public bool hasPiece;
         public GameObject tower;
