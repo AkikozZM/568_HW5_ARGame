@@ -71,6 +71,7 @@ namespace MyFirstARGame
             towerHealth -= damage;
             if (towerHealth <= 0)
             {
+                gameObject.transform.parent.GetComponent<PlaceableGrid_Script>().removePiece();
                 Destroy(gameObject);
             }
         }

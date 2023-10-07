@@ -49,6 +49,9 @@ MonoBehaviour:
   - Network_IncrementIncome
   - Network_IncrementMoney
   - Network_ReadyMethod
+  - Network_IncreaseDamage
+  - Network_IncreaseTowerHealth
+  - Network_IncreaseTowerIncome
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

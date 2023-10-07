@@ -14,9 +14,10 @@ namespace MyFirstARGame
         /// <summary>
         /// set hasPiece = true
         /// </summary>
-        public void setPiece()
+        public void setPiece(GameObject piece)
         {
             hasPiece = true;
+            piece.transform.parent = transform;
         }
         
         /// <summary>
