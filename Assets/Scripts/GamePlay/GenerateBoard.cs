@@ -76,7 +76,6 @@ namespace MyFirstARGame
                         tower.towerIncome = GlobalGameManager.player_1_tower_income;
                         tower.placeableGrid = curr.GetComponent<PlaceableGrid_Script>();
                         tower.createDelay = true;
-                        tower.SynchronizeValues();
                         //ResetSelected();
                     }
                 }
@@ -97,7 +96,6 @@ namespace MyFirstARGame
                         tower.towerIncome = GlobalGameManager.player_2_tower_income;
                         tower.placeableGrid = curr.GetComponent<PlaceableGrid_Script>();
                         tower.createDelay = true;
-                        tower.SynchronizeValues();
                         //ResetSelected();
                     }
                 }

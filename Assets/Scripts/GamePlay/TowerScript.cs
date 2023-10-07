@@ -34,6 +34,8 @@ namespace MyFirstARGame
         {
             if (firstMoment && createDelay)
             {
+                SynchronizeValues();
+
                 if (this.tag == "Income")
                 {
                     if (controller == 1)

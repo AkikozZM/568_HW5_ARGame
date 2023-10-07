@@ -52,6 +52,8 @@ MonoBehaviour:
   - Network_IncreaseDamage
   - Network_IncreaseTowerHealth
   - Network_IncreaseTowerIncome
+  - Network_SynchronizeValues
+  - SetDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
