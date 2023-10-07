@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace MyFirstARGame
 {
@@ -22,7 +23,7 @@ namespace MyFirstARGame
         {
             if (Mathf.Abs(this.transform.position.x) > 5)
             {
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
         }
 
@@ -36,7 +37,7 @@ namespace MyFirstARGame
             else if (playerIdx == 1 && collision.gameObject.tag == "Defense_blue")
             {
                 collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
             if (playerIdx == 2 && collision.gameObject.tag == "Defense_blue")
             {
@@ -46,7 +47,7 @@ namespace MyFirstARGame
             else if (playerIdx == 2 && collision.gameObject.tag == "Defense")
             {
                 collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
             if (collision.gameObject.tag == "Bullet")
             {

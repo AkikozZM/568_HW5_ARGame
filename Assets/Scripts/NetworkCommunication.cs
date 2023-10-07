@@ -35,6 +35,13 @@ namespace MyFirstARGame
             currentHealth1 -= damage1;
             currentHealth2 -= damage2;
 
+            Debug.Log("Player: " + PhotonNetwork.LocalPlayer.ActorNumber);
+            Debug.Log("Health1: " + currentHealth1);
+            Debug.Log("Health2: " + currentHealth2);
+
+            Debug.Log("Damage1: " + damage1);
+            Debug.Log("Damage2: " + damage2);
+
             this.photonView.RPC("Network_IncrementHealth", RpcTarget.All, currentHealth1, currentHealth2);
         }
 
@@ -42,6 +49,7 @@ namespace MyFirstARGame
         public void Network_IncrementHealth(int health1, int health2)
         {
             this.scoreboard.SetHealth(health1, health2);
+
             if (health1 <= 0)
             {
                 if (PhotonNetwork.LocalPlayer.ActorNumber == 2)

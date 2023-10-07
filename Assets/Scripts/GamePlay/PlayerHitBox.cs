@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace MyFirstARGame
 {
@@ -34,6 +35,7 @@ namespace MyFirstARGame
                     //GlobalGameManager.player_2_health -= collision.gameObject.GetComponent<BulletScript>().damage;
                     damage2 = damage;
                 }
+
                 netComm.IncrementHealth(damage1, damage2);
 
                 Destroy(collision.gameObject);

@@ -135,7 +135,7 @@ namespace MyFirstARGame
                 connected_players.Add(player_num);
             }
 
-            if (connected_players.Contains(2) && connected_players.Contains(2))
+            if (connected_players.Contains(1) && connected_players.Contains(2))
             {
                 Debug.Log("All Players Joined");
                 if (GameObject.Find("ReadyButton") != null)

@@ -74,7 +74,7 @@ namespace MyFirstARGame
             if (towerHealth <= 0 && placeableGrid != null)
             {
                 placeableGrid.removePiece();
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
         }
     }
