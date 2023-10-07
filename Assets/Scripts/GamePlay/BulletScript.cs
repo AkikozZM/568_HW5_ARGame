@@ -59,17 +59,7 @@ namespace MyFirstARGame
                 Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
             }
         }
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (stream.IsWriting)
-            {
-                stream.SendNext(damage);
-            }
-            else
-            {
-                damage = (int)stream.ReceiveNext();
-            }
-        }
+
         public void Initialize(float towerDamage)
         {
             this.photonView.RPC("SetDamage", RpcTarget.All, (int)towerDamage);

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.IO;
 
 namespace MyFirstARGame
 {
-    public class TowerScript : MonoBehaviour
+    public class TowerScript : MonoBehaviourPun
     {
         private NetworkCommunication netComm;
 
@@ -54,14 +55,12 @@ namespace MyFirstARGame
                 {
                     GameObject bull = PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation) as GameObject;
                     bull.GetComponent<BulletScript>().Initialize(towerDamage);
-                    //Debug.Log("Tower Damage: " + towerDamage);
                     currentDelay = 0;
                 }
                 else if (controller == 2)
                 {
                     GameObject bull = PhotonNetwork.Instantiate("Bullet_blue", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation) as GameObject;
                     bull.GetComponent<BulletScript>().Initialize(towerDamage);
-                    //Debug.Log("Tower Damage: " + towerDamage);
                     currentDelay = 0;
                 }
                 
@@ -80,20 +79,20 @@ namespace MyFirstARGame
             }
         }
 
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        public void SynchronizeValues()
         {
-            if (stream.IsWriting)
-            {
-                stream.SendNext(towerHealth);
-                stream.SendNext(towerDamage);
-                stream.SendNext(towerIncome);
-            }
-            else
-            {
-                towerHealth = (int)stream.ReceiveNext();
-                towerDamage = (int)stream.ReceiveNext();
-                towerIncome = (int)stream.ReceiveNext();
-            }
+            int curr_towerHealth = towerHealth;
+            int curr_towerDamage = towerDamage;
+            int curr_towerIncome = towerIncome;
+            this.photonView.RPC("Network_SynchronizeValues", RpcTarget.All, curr_towerHealth, curr_towerDamage, curr_towerIncome);
+        }
+
+        [PunRPC]
+        public void Network_SynchronizeValues(int currHealth, int currDamage, int currIncome)
+        {
+            towerHealth = currHealth;
+            towerDamage = currDamage;
+            towerIncome = currIncome;
         }
     }
 }
