@@ -2,7 +2,8 @@ namespace MyFirstARGame
 {
     using Photon.Pun;
     using UnityEngine;
-    
+    using UnityEngine.SceneManagement;
+
     /// <summary>
     /// You can use this class to make RPC calls between the clients. It is already spawned on each client with networking capabilities.
     /// </summary>
@@ -41,6 +42,32 @@ namespace MyFirstARGame
         public void Network_IncrementHealth(int health1, int health2)
         {
             this.scoreboard.SetHealth(health1, health2);
+            if (health1 <= 0)
+            {
+                if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
+                {
+                    PlayerPrefs.SetInt("PlayerIdx", 2);
+                }
+
+                else if (PhotonNetwork.LocalPlayer.ActorNumber == 3)
+                {
+                    PlayerPrefs.SetInt("PlayerIdx", 1);
+                }
+                SceneManager.LoadScene(2);
+            }
+            if (health2 <= 0)
+            {
+                if (PhotonNetwork.LocalPlayer.ActorNumber == 3)
+                {
+                    PlayerPrefs.SetInt("PlayerIdx", 2);
+                }
+
+                else if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
+                {
+                    PlayerPrefs.SetInt("PlayerIdx", 1);
+                }
+                SceneManager.LoadScene(2);
+            }
         }
 
         public void IncrementIncome(int increase1, int increase2)
