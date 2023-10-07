@@ -83,15 +83,23 @@ namespace MyFirstARGame
 
         public void SynchronizeValues()
         {
+
+            int curr_controller = controller;
+            PlaceableGrid_Script curr_placeableGrid = placeableGrid;
+
             int curr_towerHealth = towerHealth;
             int curr_towerDamage = towerDamage;
             int curr_towerIncome = towerIncome;
-            this.photonView.RPC("Network_SynchronizeValues", RpcTarget.All, curr_towerHealth, curr_towerDamage, curr_towerIncome);
+
+            this.photonView.RPC("Network_SynchronizeValues", RpcTarget.All, curr_controller, curr_placeableGrid, curr_towerHealth, curr_towerDamage, curr_towerIncome);
         }
 
         [PunRPC]
-        public void Network_SynchronizeValues(int currHealth, int currDamage, int currIncome)
+        public void Network_SynchronizeValues(int currController, PlaceableGrid_Script currPlaceable, int currHealth, int currDamage, int currIncome)
         {
+            controller = currController;
+            placeableGrid = currPlaceable;
+
             towerHealth = currHealth;
             towerDamage = currDamage;
             towerIncome = currIncome;
