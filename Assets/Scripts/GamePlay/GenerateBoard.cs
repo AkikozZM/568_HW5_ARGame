@@ -43,8 +43,8 @@ namespace MyFirstARGame
 
             if (hasSelectedPiece && startGame)
             {
-                //MouseClick();
-                ScreenTouch();
+                MouseClick();
+                //ScreenTouch();
             }
         }
 
@@ -75,7 +75,7 @@ namespace MyFirstARGame
                         tower.towerHealth = GlobalGameManager.player_1_tower_health;
                         tower.towerIncome = GlobalGameManager.player_1_tower_income;
                         tower.placeableGrid = curr.GetComponent<PlaceableGrid_Script>();
-                        Debug.Log(tower.placeableGrid == null);
+                        Debug.Log("Spawning tower: " + tower.towerDamage);
                         tower.createDelay = true;
                         //ResetSelected();
                     }
@@ -96,7 +96,7 @@ namespace MyFirstARGame
                         tower.towerHealth = GlobalGameManager.player_2_tower_health;
                         tower.towerIncome = GlobalGameManager.player_2_tower_income;
                         tower.placeableGrid = curr.GetComponent<PlaceableGrid_Script>();
-                        Debug.Log(tower.placeableGrid == null);
+                        Debug.Log("Spawning tower: " + tower.towerDamage);
                         tower.createDelay = true;
                         //ResetSelected();
                     }
