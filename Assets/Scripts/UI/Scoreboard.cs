@@ -91,6 +91,29 @@ namespace MyFirstARGame
             return money;
         }
 
+        public void SetDamage(int damage_1, int damage_2)
+        {
+            GlobalGameManager.player_1_damage = damage_1;
+            GlobalGameManager.player_2_damage = damage_2;
+        }
+
+        public int[] GetDamage()
+        {
+            int[] damage = { GlobalGameManager.player_1_damage, GlobalGameManager.player_2_damage };
+            return damage;
+        }
+        public void SetTowerHealth(int tower_health_1, int tower_health_2)
+        {
+            GlobalGameManager.player_1_tower_health = tower_health_1;
+            GlobalGameManager.player_2_tower_health = tower_health_2;
+        }
+
+        public int[] GetTowerHealth()
+        {
+            int[] damage = { GlobalGameManager.player_1_damage, GlobalGameManager.player_2_damage };
+            return damage;
+        }
+
         public void ReadyMethod(int player_num)
         {
             if (!connected_players.Contains(player_num))
@@ -99,7 +122,7 @@ namespace MyFirstARGame
                 connected_players.Add(player_num);
             }
 
-            if (connected_players.Contains(1) && connected_players.Contains(2))
+            if (connected_players.Contains(2) && connected_players.Contains(3))
             {
                 Debug.Log("All Players Joined");
                 if (GameObject.Find("ReadyButton") != null)
