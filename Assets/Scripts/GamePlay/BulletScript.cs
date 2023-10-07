@@ -26,7 +26,11 @@ namespace MyFirstARGame
                 PhotonNetwork.Destroy(gameObject);
             }
         }
-
+        /// <summary>
+        /// player idx: 1 -> red bullet
+        /// player idx: 2 -> blue bullet
+        /// </summary>
+        /// <param name="collision"></param>
         void OnCollisionEnter(Collision collision)
         {
             if (playerIdx == 1 && collision.gameObject.tag == "Defense")
