@@ -54,14 +54,14 @@ namespace MyFirstARGame
                 {
                     GameObject bull = PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation) as GameObject;
                     bull.GetComponent<BulletScript>().damage = towerDamage;
-                    Debug.Log("Tower Damage: " + towerDamage);
+                    //Debug.Log("Tower Damage: " + towerDamage);
                     currentDelay = 0;
                 }
                 else if (controller == 2)
                 {
                     GameObject bull = PhotonNetwork.Instantiate("Bullet_blue", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation) as GameObject;
                     bull.GetComponent<BulletScript>().damage = towerDamage;
-                    Debug.Log("Tower Damage: " + towerDamage);
+                    //Debug.Log("Tower Damage: " + towerDamage);
                     currentDelay = 0;
                 }
                 
