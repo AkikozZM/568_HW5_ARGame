@@ -146,6 +146,62 @@ namespace MyFirstARGame
         {
             this.scoreboard.ReadyMethod(player_num);
         }
+
+        public void IncreaseDamage(int increase1, int increase2)
+        {
+            var damage = this.scoreboard.GetDamage();
+
+            int currentDamage1 = damage[0];
+            int currentDamage2 = damage[1];
+
+            currentDamage1 += increase1;
+            currentDamage2 += increase2;
+
+            this.photonView.RPC("Network_IncreaseDamage", RpcTarget.All, currentDamage1, currentDamage2);
+        }
+
+        [PunRPC]
+        public void Network_IncreaseDamage(int damage1, int damage2)
+        {
+            this.scoreboard.SetDamage(damage1, damage2);
+        }
+
+        public void IncreaseTowerHealth(int increase1, int increase2)
+        {
+            var health = this.scoreboard.GetTowerHealth();
+
+            int currentHealth1 = health[0];
+            int currentHealth2 = health[1];
+
+            currentHealth1 += increase1;
+            currentHealth2 += increase2;
+
+            this.photonView.RPC("Network_IncreaseTowerHealth", RpcTarget.All, currentHealth1, currentHealth2);
+        }
+
+        [PunRPC]
+        public void Network_IncreaseTowerHealth(int health1, int health2)
+        {
+            this.scoreboard.SetTowerHealth(health1, health2);
+        }
+        public void IncreaseTowerIncome(int increase1, int increase2)
+        {
+            var income = this.scoreboard.GetTowerIncome();
+
+            int currentIncome1 = income[0];
+            int currentIncome2 = income[1];
+
+            currentIncome1 += increase1;
+            currentIncome2 += increase2;
+
+            this.photonView.RPC("Network_IncreaseTowerHealth", RpcTarget.All, currentIncome1, currentIncome2);
+        }
+
+        [PunRPC]
+        public void Network_IncreaseTowerIncome(int income1, int income2)
+        {
+            this.scoreboard.SetTowerHealth(income1, income2);
+        }
     }
 
 }

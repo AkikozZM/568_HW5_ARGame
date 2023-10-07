@@ -102,6 +102,7 @@ namespace MyFirstARGame
             int[] damage = { GlobalGameManager.player_1_damage, GlobalGameManager.player_2_damage };
             return damage;
         }
+
         public void SetTowerHealth(int tower_health_1, int tower_health_2)
         {
             GlobalGameManager.player_1_tower_health = tower_health_1;
@@ -110,8 +111,20 @@ namespace MyFirstARGame
 
         public int[] GetTowerHealth()
         {
-            int[] damage = { GlobalGameManager.player_1_damage, GlobalGameManager.player_2_damage };
-            return damage;
+            int[] tower_health = { GlobalGameManager.player_1_tower_health, GlobalGameManager.player_2_tower_health };
+            return tower_health;
+        }
+
+        public void SetTowerIncome(int tower_income_1, int tower_income_2)
+        {
+            GlobalGameManager.player_1_tower_income = tower_income_1;
+            GlobalGameManager.player_2_tower_income = tower_income_2;
+        }
+
+        public int[] GetTowerIncome()
+        {
+            int[] tower_income = { GlobalGameManager.player_1_tower_income, GlobalGameManager.player_2_tower_income };
+            return tower_income;
         }
 
         public void ReadyMethod(int player_num)

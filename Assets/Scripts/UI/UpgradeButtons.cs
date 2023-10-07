@@ -427,12 +427,12 @@ namespace MyFirstARGame
             if (currPlayer == 1 || currPlayer == 2)
             {
                 NetComm.SpendMoney(upgradeCost, 0);
-                GlobalGameManager.player_1_damage += increase_damage;
+                NetComm.IncreaseDamage(increase_damage, 0);
             }
             else if (currPlayer == 3)
             {
                 NetComm.SpendMoney(0, upgradeCost);
-                GlobalGameManager.player_2_damage += increase_damage;
+                NetComm.IncreaseDamage(0, increase_damage);
             }
 
             allTowers = FindObjectsByType<TowerScript>(FindObjectsSortMode.None);
@@ -476,12 +476,12 @@ namespace MyFirstARGame
             if (currPlayer == 1 || currPlayer == 2)
             {
                 NetComm.SpendMoney(upgradeCost, 0);
-                GlobalGameManager.player_1_tower_health += increase_health;
+                NetComm.IncreaseTowerHealth(increase_health, 0);
             }
             else if (currPlayer == 3)
             {
                 NetComm.SpendMoney(0, upgradeCost);
-                GlobalGameManager.player_2_tower_health += increase_health;
+                NetComm.IncreaseTowerHealth(0, increase_health);
             }
 
             allTowers = FindObjectsByType<TowerScript>(FindObjectsSortMode.None);
@@ -509,13 +509,13 @@ namespace MyFirstARGame
                     increase_income = 5;
                     break;
                 case 1:
-                    increase_income = 10;
+                    increase_income = 5;
                     break;
                 case 2:
-                    increase_income = 15;
+                    increase_income = 5;
                     break;
                 case 3:
-                    increase_income = 20;
+                    increase_income = 5;
                     break;
                 default:
                     increase_income = 5;
@@ -525,12 +525,12 @@ namespace MyFirstARGame
             if (currPlayer == 1 || currPlayer == 2)
             {
                 NetComm.SpendMoney(upgradeCost, 0);
-                GlobalGameManager.player_1_tower_income += increase_income;
+                NetComm.IncreaseTowerIncome(increase_income, 0);
             }
             else if (currPlayer == 3)
             {
                 NetComm.SpendMoney(0, upgradeCost);
-                GlobalGameManager.player_2_tower_income += increase_income;
+                NetComm.IncreaseTowerIncome(0, increase_income);
             }
 
             allTowers = FindObjectsByType<TowerScript>(FindObjectsSortMode.None);
