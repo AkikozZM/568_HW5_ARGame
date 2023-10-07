@@ -33,7 +33,7 @@ namespace MyFirstARGame
         /// <param name="collision"></param>
         void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Bullet Damage: " + damage);
+            //Debug.Log("Bullet Damage: " + damage);
             if (playerIdx == 1 && collision.gameObject.tag == "Defense")
             {
                 Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
@@ -57,6 +57,17 @@ namespace MyFirstARGame
             if (collision.gameObject.tag == "Bullet")
             {
                 Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
+            }
+        }
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(damage);
+            }
+            else
+            {
+                damage = (int)stream.ReceiveNext();
             }
         }
     }

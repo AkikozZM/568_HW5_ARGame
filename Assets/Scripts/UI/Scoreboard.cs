@@ -93,8 +93,6 @@ namespace MyFirstARGame
 
         public void SetDamage(int damage_1, int damage_2)
         {
-            Debug.Log("Set damage1:" + damage_1);
-            Debug.Log("Set damage2: " + damage_2);
             GlobalGameManager.player_1_damage = damage_1;
             GlobalGameManager.player_2_damage = damage_2;
         }

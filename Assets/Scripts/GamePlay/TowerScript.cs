@@ -82,5 +82,21 @@ namespace MyFirstARGame
                 PhotonNetwork.Destroy(gameObject);
             }
         }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(towerHealth);
+                stream.SendNext(towerDamage);
+                stream.SendNext(towerIncome);
+            }
+            else
+            {
+                towerHealth = (int)stream.ReceiveNext();
+                towerDamage = (int)stream.ReceiveNext();
+                towerIncome = (int)stream.ReceiveNext();
+            }
+        }
     }
 }
