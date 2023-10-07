@@ -5,7 +5,7 @@ using Photon.Pun;
 
 namespace MyFirstARGame
 {
-    public class BulletScript : MonoBehaviour
+    public class BulletScript : MonoBehaviourPun
     {
         private GameManager GlobalGameManager;
 
@@ -70,5 +70,16 @@ namespace MyFirstARGame
                 damage = (int)stream.ReceiveNext();
             }
         }
+        public void Initialize(float towerDamage)
+        {
+            this.photonView.RPC("SetDamage", RpcTarget.All, (int)towerDamage);
+
+        }
+        [PunRPC]
+        void SetDamage(int dmg)
+        {
+            damage = dmg;
+        }
+        
     }
 }
