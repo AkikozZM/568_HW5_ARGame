@@ -34,7 +34,7 @@ namespace MyFirstARGame
                 Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
                 
             }
-            else if (playerIdx == 1 && collision.gameObject.tag == "Defense_blue" && PhotonNetwork.LocalPlayer.ActorNumber == 1)
+            else if (playerIdx == 1 && collision.gameObject.tag == "Defense_blue" && PhotonNetwork.LocalPlayer.ActorNumber == 2)
             {
                 collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
                 PhotonNetwork.Destroy(gameObject);
@@ -44,7 +44,7 @@ namespace MyFirstARGame
                 Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
 
             }
-            else if (playerIdx == 2 && collision.gameObject.tag == "Defense" && PhotonNetwork.LocalPlayer.ActorNumber == 2)
+            else if (playerIdx == 2 && collision.gameObject.tag == "Defense" && PhotonNetwork.LocalPlayer.ActorNumber == 3)
             {
                 collision.gameObject.GetComponent<TowerScript>().DamageTower(damage);
                 PhotonNetwork.Destroy(gameObject);
