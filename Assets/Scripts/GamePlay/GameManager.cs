@@ -33,8 +33,8 @@ namespace MyFirstARGame
 
         void Start()
         {
-            player_1_health = 100;
-            player_2_health = 100;
+            player_1_health = 5;
+            player_2_health = 5;
 
             player_1_income = 10;
             player_2_income = 10;
