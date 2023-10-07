@@ -71,9 +71,8 @@ namespace MyFirstARGame
         public void DamageTower(int damage)
         {
             towerHealth -= damage;
-            if (towerHealth <= 0)
+            if (towerHealth <= 0 && placeableGrid != null)
             {
-                //Debug.Log(placeableGrid == null);
                 placeableGrid.removePiece();
                 Destroy(gameObject);
             }
