@@ -67,14 +67,15 @@ namespace MyFirstARGame
                     {
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
                         GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, 90, 0)) as GameObject;
-                        PlaceableGrid_Script board_space = curr.GetComponent<PlaceableGrid_Script>();
-                        board_space.setPiece(curr_piece);
+                        curr.GetComponent<PlaceableGrid_Script>().setPiece(curr_piece);
 
                         TowerScript tower = curr_piece.GetComponent<TowerScript>();
                         tower.controller = 1;
                         tower.towerDamage = GlobalGameManager.player_1_damage;
                         tower.towerHealth = GlobalGameManager.player_1_tower_health;
                         tower.towerIncome = GlobalGameManager.player_1_tower_income;
+                        tower.placeableGrid = curr.GetComponent<PlaceableGrid_Script>();
+                        Debug.Log(tower.placeableGrid == null);
                         tower.createDelay = true;
                         //ResetSelected();
                     }
@@ -87,14 +88,15 @@ namespace MyFirstARGame
                     {
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
                         GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex + 3].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
-                        PlaceableGrid_Script board_space = curr.GetComponent<PlaceableGrid_Script>();
-                        board_space.setPiece(curr_piece);
+                        curr.GetComponent<PlaceableGrid_Script>().setPiece(curr_piece);
 
                         TowerScript tower = curr_piece.GetComponent<TowerScript>();
                         tower.controller = 2;
                         tower.towerDamage = GlobalGameManager.player_2_damage;
                         tower.towerHealth = GlobalGameManager.player_2_tower_health;
                         tower.towerIncome = GlobalGameManager.player_2_tower_income;
+                        tower.placeableGrid = curr.GetComponent<PlaceableGrid_Script>();
+                        Debug.Log(tower.placeableGrid == null);
                         tower.createDelay = true;
                         //ResetSelected();
                     }

@@ -22,6 +22,8 @@ namespace MyFirstARGame
         private bool firstMoment = true;
         public bool createDelay = false;
 
+        public PlaceableGrid_Script placeableGrid = null;
+
         void Start()
         {
             netComm = FindObjectOfType<NetworkCommunication>();
@@ -71,7 +73,8 @@ namespace MyFirstARGame
             towerHealth -= damage;
             if (towerHealth <= 0)
             {
-                gameObject.transform.parent.GetComponent<PlaceableGrid_Script>().removePiece();
+                //Debug.Log(placeableGrid == null);
+                placeableGrid.removePiece();
                 Destroy(gameObject);
             }
         }
