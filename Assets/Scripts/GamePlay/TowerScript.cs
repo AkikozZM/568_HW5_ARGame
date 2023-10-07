@@ -76,11 +76,9 @@ namespace MyFirstARGame
             towerHealth -= damage;
             SynchronizeValues();
 
-            Debug.Log(placeableGrid == null);
-            if (towerHealth <= 0 && placeableGrid != null)
+            if (towerHealth <= 0)
             {
-                placeableGrid.removePiece();
-                PhotonNetwork.Destroy(gameObject);
+                this.photonView.RPC("Network_Destroy", RpcTarget.All);
             }
         }
 
@@ -105,6 +103,16 @@ namespace MyFirstARGame
             towerHealth = currHealth;
             towerDamage = currDamage;
             towerIncome = currIncome;
+        }
+
+        [PunRPC]
+        public void Network_Destroy()
+        {
+            if (placeableGrid != null)
+            {
+                placeableGrid.removePiece();
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
     }
 }
