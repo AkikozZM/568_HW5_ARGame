@@ -66,7 +66,7 @@ namespace MyFirstARGame
                     if (curr.GetComponent<PlaceableGrid_Script>().getHasPiece() == false)
                     {
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
-                        GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, 90, 0)) as GameObject;
+                        GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
                         curr.GetComponent<PlaceableGrid_Script>().setPiece(curr_piece);
 
                         TowerScript tower = curr_piece.GetComponent<TowerScript>();
@@ -87,7 +87,7 @@ namespace MyFirstARGame
                     if (curr.GetComponent<PlaceableGrid_Script>().getHasPiece() == false)
                     {
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
-                        GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex + 3].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
+                        GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex + 3].name, hitPos, Quaternion.Euler(0, 90, 0)) as GameObject;
                         curr.GetComponent<PlaceableGrid_Script>().setPiece(curr_piece);
 
                         TowerScript tower = curr_piece.GetComponent<TowerScript>();
