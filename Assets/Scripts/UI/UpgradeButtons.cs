@@ -44,6 +44,8 @@ namespace MyFirstARGame
 
         private int upgradeCost;
 
+        private TowerScript[] allTowers;
+
         private void Start()
         {
             GlobalGameManager = GameObject.Find("GlobalGamePlayManager").GetComponent<GameManager>();
@@ -58,7 +60,7 @@ namespace MyFirstARGame
 
             upgradeMenuOpen = false;
 
-            upgradeCost = 50;
+            upgradeCost = 100;
         }
 
         private void Update()
@@ -402,45 +404,151 @@ namespace MyFirstARGame
 
         public void AttackButton()
         {
+            int increase_damage = 1;
+
+            switch (attackLevel)
+            {
+                case 0:
+                    increase_damage = 1;
+                    break;
+                case 1:
+                    increase_damage = 5;
+                    break;
+                case 2:
+                    increase_damage = 10;
+                    break;
+                case 3:
+                    increase_damage = 20;
+                    break;
+                default:
+                    break;
+            }
+
             if (currPlayer == 1 || currPlayer == 2)
             {
                 NetComm.SpendMoney(upgradeCost, 0);
-                GlobalGameManager.player_1_damage += 2;
+                GlobalGameManager.player_1_damage += increase_damage;
             }
             else if (currPlayer == 3)
             {
                 NetComm.SpendMoney(0, upgradeCost);
-                GlobalGameManager.player_2_damage += 2;
+                GlobalGameManager.player_2_damage += increase_damage;
+            }
+
+            allTowers = FindObjectsByType<TowerScript>(FindObjectsSortMode.None);
+            foreach (TowerScript t in allTowers)
+            {
+                if (t.controller == 1)
+                {
+                    t.towerDamage = GlobalGameManager.player_1_damage;
+                }
+                else if (t.controller == 2)
+                {
+                    t.towerDamage = GlobalGameManager.player_2_damage;
+                }
             }
 
             attackLevel++;
         }
         public void DefenseButton()
         {
+            int increase_health = 5;
+
+            switch (defenseLevel)
+            {
+                case 0:
+                    increase_health = 5;
+                    break;
+                case 1:
+                    increase_health = 10;
+                    break;
+                case 2:
+                    increase_health = 10;
+                    break;
+                case 3:
+                    increase_health = 20;
+                    break;
+                default:
+                    increase_health = 5;
+                    break;
+            }
+
             if (currPlayer == 1 || currPlayer == 2)
             {
                 NetComm.SpendMoney(upgradeCost, 0);
-                GlobalGameManager.player_1_tower_health += 20;
+                GlobalGameManager.player_1_tower_health += increase_health;
             }
             else if (currPlayer == 3)
             {
                 NetComm.SpendMoney(0, upgradeCost);
-                GlobalGameManager.player_2_tower_health += 20;
+                GlobalGameManager.player_2_tower_health += increase_health;
+            }
+
+            allTowers = FindObjectsByType<TowerScript>(FindObjectsSortMode.None);
+            foreach (TowerScript t in allTowers)
+            {
+                if (t.controller == 1)
+                {
+                    t.towerHealth = GlobalGameManager.player_1_tower_health;
+                }
+                else if (t.controller == 2)
+                {
+                    t.towerHealth = GlobalGameManager.player_2_tower_health;
+                }
             }
 
             defenseLevel++;
         }
         public void IncomeButton()
         {
+            int increase_income = 5;
+
+            switch (incomeLevel)
+            {
+                case 0:
+                    increase_income = 5;
+                    break;
+                case 1:
+                    increase_income = 10;
+                    break;
+                case 2:
+                    increase_income = 15;
+                    break;
+                case 3:
+                    increase_income = 20;
+                    break;
+                default:
+                    increase_income = 5;
+                    break;
+            }
+
             if (currPlayer == 1 || currPlayer == 2)
             {
                 NetComm.SpendMoney(upgradeCost, 0);
-                GlobalGameManager.player_1_tower_income += 10;
+                GlobalGameManager.player_1_tower_income += increase_income;
             }
             else if (currPlayer == 3)
             {
                 NetComm.SpendMoney(0, upgradeCost);
-                GlobalGameManager.player_2_tower_income += 10;
+                GlobalGameManager.player_2_tower_income += increase_income;
+            }
+
+            allTowers = FindObjectsByType<TowerScript>(FindObjectsSortMode.None);
+            foreach (TowerScript t in allTowers)
+            {
+                if (t.gameObject.tag == "Income")
+                {
+                    if (t.controller == 1)
+                    {
+                        t.towerIncome = GlobalGameManager.player_1_tower_income;
+                        NetComm.IncrementIncome(increase_income, 0);
+                    }
+                    else if (t.controller == 2)
+                    {
+                        t.towerIncome = GlobalGameManager.player_2_tower_income;
+                        NetComm.IncrementIncome(0, increase_income);
+                    }
+                }
             }
 
             incomeLevel++;

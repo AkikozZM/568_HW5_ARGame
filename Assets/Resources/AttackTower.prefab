@@ -258,6 +258,9 @@ MonoBehaviour:
   controller: 0
   playerIdx: 1
   towerHealth: 0
+  towerDamage: 0
+  towerIncome: 0
+  createDelay: 0
 --- !u!1 &4788218846406963912
 GameObject:
   m_ObjectHideFlags: 0
