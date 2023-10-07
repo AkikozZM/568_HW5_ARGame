@@ -67,7 +67,9 @@ namespace MyFirstARGame
                     {
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
                         GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex].name, hitPos, Quaternion.Euler(0, 90, 0)) as GameObject;
-                        curr.GetComponent<PlaceableGrid_Script>().setPiece(curr_piece);
+                        PlaceableGrid_Script board_space = curr.GetComponent<PlaceableGrid_Script>();
+                        board_space.setPiece(curr_piece);
+
                         TowerScript tower = curr_piece.GetComponent<TowerScript>();
                         tower.controller = 1;
                         tower.towerDamage = GlobalGameManager.player_1_damage;
@@ -85,7 +87,9 @@ namespace MyFirstARGame
                     {
                         Vector3 hitPos = hit.collider.gameObject.transform.position;
                         GameObject curr_piece = PhotonNetwork.Instantiate(pieces[pieceIndex + 3].name, hitPos, Quaternion.Euler(0, -90, 0)) as GameObject;
-                        curr.GetComponent<PlaceableGrid_Script>().setPiece(curr_piece);
+                        PlaceableGrid_Script board_space = curr.GetComponent<PlaceableGrid_Script>();
+                        board_space.setPiece(curr_piece);
+
                         TowerScript tower = curr_piece.GetComponent<TowerScript>();
                         tower.controller = 2;
                         tower.towerDamage = GlobalGameManager.player_2_damage;

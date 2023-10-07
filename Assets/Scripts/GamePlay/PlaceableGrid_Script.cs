@@ -7,6 +7,8 @@ namespace MyFirstARGame
     public class PlaceableGrid_Script : MonoBehaviour
     {
         public bool hasPiece;
+        public GameObject tower;
+
         private void Start()
         {
             hasPiece = false;
@@ -17,7 +19,7 @@ namespace MyFirstARGame
         public void setPiece(GameObject piece)
         {
             hasPiece = true;
-            piece.transform.parent = transform;
+            tower = piece;
         }
         
         /// <summary>
