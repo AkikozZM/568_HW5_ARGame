@@ -45,3 +45,5 @@ sysinfo.txt
 *.unitypackage
 
 .DS_Store
+.vs/568_HW5_ARGame/v17/.suo
+Assets/SharedSpaceImageLibrary.asset
