@@ -20,7 +20,7 @@ namespace MyFirstARGame
         GameObject hitbox1;
         GameObject hitbox2;
 
-        private bool startGame;
+        public bool startGame;
 
         private GameManager GlobalGameManager;
 
@@ -43,8 +43,8 @@ namespace MyFirstARGame
 
             if (hasSelectedPiece && startGame)
             {
-                //MouseClick();
-                ScreenTouch();
+                MouseClick();
+                //ScreenTouch();
             }
         }
 

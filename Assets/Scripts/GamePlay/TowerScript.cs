@@ -48,13 +48,13 @@ namespace MyFirstARGame
 
             if (this.tag == "Attack" && currentDelay > attackDelay && createDelay)
             {
-                if (playerIdx == 1)
+                if (controller == 1)
                 {
                     GameObject bull = PhotonNetwork.Instantiate("Bullet", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation) as GameObject;
                     bull.GetComponent<BulletScript>().damage = towerDamage;
                     currentDelay = 0;
                 }
-                else if (playerIdx == 2)
+                else if (controller == 2)
                 {
                     GameObject bull = PhotonNetwork.Instantiate("Bullet_blue", this.transform.position + new Vector3(0.0f, 0.12f, 0.0f), this.transform.rotation) as GameObject;
                     bull.GetComponent<BulletScript>().damage = towerDamage;
