@@ -33,6 +33,7 @@ namespace MyFirstARGame
         /// <param name="collision"></param>
         void OnCollisionEnter(Collision collision)
         {
+            Debug.Log("Damage: " + damage);
             if (playerIdx == 1 && collision.gameObject.tag == "Defense")
             {
                 Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.GetComponent<Collider>());
