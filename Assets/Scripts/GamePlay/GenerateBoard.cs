@@ -134,18 +134,18 @@ namespace MyFirstARGame
             if (board == null)
             {
                 // when game starts, instantiate a gameboard
-                board = PhotonNetwork.Instantiate("Board", new Vector3(0, 0, 1), Quaternion.Euler(0, 90, 0));
-                hitbox1 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(1.0f, 0.3f, 1), Quaternion.identity);
-                hitbox2 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(-0.3f, 0.3f, 1), Quaternion.identity);
+                board = PhotonNetwork.Instantiate("Board", new Vector3(0, 0, 0.4f), Quaternion.Euler(0, -90, 0));
+                hitbox1 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(1.0f, 0.3f, 0.4f), Quaternion.identity);
+                hitbox2 = PhotonNetwork.Instantiate("PlayerHitBox", new Vector3(-0.3f, 0.3f, 0.4f), Quaternion.identity);
 
                 hitbox1.GetComponent<PlayerHitBox>().controller = 1;
                 hitbox2.GetComponent<PlayerHitBox>().controller = 2;
             }
             else if (board != null)
             {
-                board.transform.position = new Vector3(0, 0, 1);
-                hitbox1.transform.position = new Vector3(1.0f, 0.3f, 1);
-                hitbox2.transform.position = new Vector3(-0.3f, 0.3f, 1);
+                board.transform.position = new Vector3(0, 0, 0.4f);
+                hitbox1.transform.position = new Vector3(1.0f, 0.3f, 0.4f);
+                hitbox2.transform.position = new Vector3(-0.3f, 0.3f, 0.4f);
             }
             
         }
