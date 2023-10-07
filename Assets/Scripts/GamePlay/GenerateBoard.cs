@@ -43,8 +43,8 @@ namespace MyFirstARGame
 
             if (hasSelectedPiece && startGame)
             {
-                //MouseClick();
-                ScreenTouch();
+                MouseClick();
+                //ScreenTouch();
             }
         }
 
