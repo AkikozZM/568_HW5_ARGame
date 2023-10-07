@@ -154,27 +154,50 @@ namespace MyFirstARGame
         private void OnGUI()
         {
             GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
-            GUILayout.BeginVertical();
-            GUILayout.FlexibleSpace();
+            GUILayout.BeginHorizontal();
 
             foreach (var score in this.scores)
             {
                 GUILayout.Label($"{score.Key}: {score.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             }
-            int player_num = PhotonNetwork.LocalPlayer.ActorNumber;
-            GUILayout.Label("Player ID: " + player_num, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
+            int player_num = PhotonNetwork.LocalPlayer.ActorNumber - 1;
 
-            GUILayout.Label("Player 1 Health: " + GlobalGameManager.player_1_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
-            GUILayout.Label("Player 1 Money: $" + GlobalGameManager.player_1_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
-            GUILayout.Label("Player 1 Income: $" + GlobalGameManager.player_1_income, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
-            GUILayout.FlexibleSpace();
+            if (player_num == 0 || player_num == 1)
+            {
+                GUILayout.BeginVertical();
+                GUILayout.Label("Player ID: " + player_num, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
+                GUILayout.Label("Player Health: " + GlobalGameManager.player_1_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.red}, fontSize = 30 });
+                GUILayout.Label("Player Money: $" + GlobalGameManager.player_1_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
+                GUILayout.Label("Player Income: $" + GlobalGameManager.player_1_income, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
+                GUILayout.EndVertical();
 
-            GUILayout.Label("Player 2 Health: " + GlobalGameManager.player_2_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
-            GUILayout.Label("Player 2 Money: $" + GlobalGameManager.player_2_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
-            GUILayout.Label("Player 2 Income: $" + GlobalGameManager.player_2_income, new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
-            GUILayout.FlexibleSpace();
+                GUILayout.FlexibleSpace();
 
-            GUILayout.EndVertical();
+                GUILayout.BeginVertical();
+                GUILayout.Label("Enemy Health: " + GlobalGameManager.player_2_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.blue }, fontSize = 30 });
+                GUILayout.Label("Enemy Money: $" + GlobalGameManager.player_2_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.blue }, fontSize = 30 });
+                GUILayout.Label("Enemy Income: $" + GlobalGameManager.player_2_income, new GUIStyle { normal = new GUIStyleState { textColor = Color.blue }, fontSize = 30 });
+                GUILayout.EndVertical();
+            }
+            else if (player_num == 2)
+            {
+                GUILayout.BeginVertical();
+                GUILayout.Label("Player ID: " + player_num, new GUIStyle { normal = new GUIStyleState { textColor = Color.blue }, fontSize = 30 });
+                GUILayout.Label("Player Health: " + GlobalGameManager.player_2_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.blue }, fontSize = 30 });
+                GUILayout.Label("Player Money: $" + GlobalGameManager.player_2_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.blue }, fontSize = 30 });
+                GUILayout.Label("Player Income: $" + GlobalGameManager.player_2_income, new GUIStyle { normal = new GUIStyleState { textColor = Color.blue }, fontSize = 30 });
+                GUILayout.EndVertical();
+
+                GUILayout.FlexibleSpace();
+
+                GUILayout.BeginVertical();
+                GUILayout.Label("Enemy Health: " + GlobalGameManager.player_1_health, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
+                GUILayout.Label("Enemy Money: $" + GlobalGameManager.player_1_money, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
+                GUILayout.Label("Enemy Income: $" + GlobalGameManager.player_1_income, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
+                GUILayout.EndVertical();
+            }
+
+            GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
     }
