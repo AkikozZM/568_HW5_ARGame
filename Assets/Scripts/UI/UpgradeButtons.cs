@@ -412,7 +412,7 @@ namespace MyFirstARGame
                     increase_damage = 1;
                     break;
                 case 1:
-                    increase_damage = 5;
+                    increase_damage = 3;
                     break;
                 case 2:
                     increase_damage = 10;
