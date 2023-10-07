@@ -81,7 +81,7 @@ namespace MyFirstARGame
                     }
                 }
                 // Player 2 places pieces on red grid
-                else if (player_num == 2 && hit.collider.gameObject.CompareTag("PlaceableGrid_red") && netComm.SpendMoney(0, 50))
+                else if (player_num == 3 && hit.collider.gameObject.CompareTag("PlaceableGrid_red") && netComm.SpendMoney(0, 50))
                 {
                     GameObject curr = hit.collider.gameObject;
                     if (curr.GetComponent<PlaceableGrid_Script>().getHasPiece() == false)
