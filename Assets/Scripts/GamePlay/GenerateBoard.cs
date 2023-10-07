@@ -8,6 +8,8 @@ namespace MyFirstARGame
     public class GenerateBoard : MonoBehaviour
     {
         public GameObject[] pieces;
+        public GameObject[][] grid;
+
         public NetworkLauncher networkLauncher;
         private NetworkCommunication netComm;
         public float gridSizeX = 4.0f;
